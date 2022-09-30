@@ -38,4 +38,5 @@ public interface behavior {
      * This is a place to set motors to 0.0, clear variables, post positions... Anything you want to happen when the state finishes.
      */
     void dispose();
+
 }

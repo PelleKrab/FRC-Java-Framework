@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.sql.rowset.spi.XmlReader;
@@ -23,15 +25,24 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    In.Init("XML/Controls_IN/GarryChassis.xml", "XML/Controls_IN/GarryShooter.xml");
-    Out.Init("XML/Config_OUT/CHASSIS.xml", "XML/Config_OUT/SHOOTER.xml");
+    In.Init("/XML/Controls_IN/GarryChassis.xml", "/XML/Controls_IN/GarryShooter.xml");
+    Out.Init("/XML/Config_OUT/CHASSIS.xml", "/XML/Config_OUT/SHOOTER.xml");
     Subsystems.add(new Chassis(), SubsystemID.CHASSIS);
     Subsystems.add(new Shooter(), SubsystemID.SHOOTER);
     Subsystems.add(new Arms(), SubsystemID.ARMS);
     Subsystems.add(new Intake(), SubsystemID.INTAKE);
+    test();
+    
     
     Subsystems.robotInit();
   }
+    public void test(){
+      Map<Character, Runnable> commands = new HashMap<>();
+      commands.put('a', () -> System.out.println("a"));
+      commands.get('a').run();
+    }
+  
+
 
   @Override
   public void robotPeriodic() {
@@ -42,6 +53,11 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     Subsystems.autonomousInit();
   }
+
+  // @Override
+  // public void disabledInit() {
+  //   Subsystems.disabledInit();
+  // }
 
   @Override
   public void autonomousPeriodic() {
@@ -56,6 +72,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Subsystems.teleopPeriodic();
+
   }
 
   @Override

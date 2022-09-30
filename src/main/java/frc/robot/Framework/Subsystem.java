@@ -15,6 +15,8 @@ public interface Subsystem {
 
     public void autonomousPeriodic();
 
+    // public void disabledInit();
+
     public void teleopInit();
 
     public void teleopPeriodic();

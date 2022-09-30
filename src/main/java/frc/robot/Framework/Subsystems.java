@@ -60,6 +60,12 @@ public class Subsystems {
         }
     }
 
+    // public static void disabledInit() {
+    //     for (Subsystem subsystem : subsystems.values()) {
+    //         subsystem.disabledInit();
+    //     }
+    // }
+
     public static void teleopPeriodic() {
         for (Subsystem subsystem : subsystems.values()) {
             subsystem.teleopPeriodic();
