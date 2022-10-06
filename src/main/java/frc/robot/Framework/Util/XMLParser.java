@@ -10,17 +10,17 @@ import javax.xml.transform.stream.StreamResult;
 
 import java.io.*;
 
-public class XMLParser{
+public class XMLParser {
     private Document doc;
     private DocumentBuilder dBuilder;
 
-    public XMLParser(String path){
+    public XMLParser(String path) {
         try {
             File fXmlFile = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(fXmlFile);
-                    
+
             doc.getDocumentElement().normalize();
             prettyPrint(doc);
             System.out.println();
@@ -28,16 +28,19 @@ public class XMLParser{
             e.printStackTrace();
         }
     }
-    
-    public Element getRootElement(){
+
+    public Element getRootElement() {
         return doc.getDocumentElement();
     }
-    public Document getDoc(){
+
+    public Document getDoc() {
         return doc;
     }
-    public DocumentBuilder getDocumentBuilder(){
+
+    public DocumentBuilder getDocumentBuilder() {
         return dBuilder;
     }
+
     public static final void prettyPrint(Document xml) throws Exception {
         Transformer tf = TransformerFactory.newInstance().newTransformer();
         tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");

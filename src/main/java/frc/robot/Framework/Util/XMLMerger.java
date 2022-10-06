@@ -40,7 +40,7 @@ public class XMLMerger {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
             domFactory.setIgnoringComments(true);
             DocumentBuilder builder = domFactory.newDocumentBuilder();
-            Document doc = builder.parse(new File("/home/lvuser/deploy/" + strings[0]));
+            Document doc = builder.parse(new File(Filesystem.getDeployDirectory() + strings[0]));
 
             NodeList nodes = doc.getElementsByTagName(element);
 

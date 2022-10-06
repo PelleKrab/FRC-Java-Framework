@@ -41,15 +41,16 @@ public class Log {
                 e.printStackTrace();
             }
         }
-        System.out.print("Log Test");
+
         startTime = Instant.now().toEpochMilli();
         File file = new File(Filesystem.getOperatingDirectory() + "/Logs/"
-                + java.time.LocalDateTime.now().format(DateTimeFormatter.ISO_DATE) + "-" + subsystem + ".csv");
+                + java.time.LocalDateTime.now().format(DateTimeFormatter.ISO_DATE) + "-" + Instant.now().toEpochMilli() + "-" + subsystem + ".csv");
 
         try {
             outputfile = new FileWriter(file);
 
             outputfile.write(String.join(",", headers));
+            outputfile.write("\r\n");
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -59,7 +60,8 @@ public class Log {
 
     public void Write(String mode, String data) {
         try {
-            outputfile.write((Instant.now().toEpochMilli() - startTime) / 1000 + "," + mode + "," + data + "\r\n");
+            double time = (Instant.now().toEpochMilli() - startTime) /1000.0;
+            outputfile.write(time + "," + mode + "," + data + "\r\n");
         } catch (Exception e) {
             // TODO: handle exception
         }

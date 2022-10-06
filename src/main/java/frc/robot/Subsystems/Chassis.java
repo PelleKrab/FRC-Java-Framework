@@ -44,12 +44,12 @@ public class Chassis implements Subsystem {
     }
 
     public void teleopInit() {
-        log.Write("TeleoPeriodic", String.valueOf(input.getAxis("LEFT_SPEED", "DRIVE") * -1));
-        System.out.println("Log Test Init");
+        log.RestartNewLog();
+        System.out.println("Chassis teleop init");
     }
 
     public void teleopPeriodic() {
-        log.RestartNewLog();
+        log.Write("TeleoPeriodic", String.valueOf(input.getAxis("LEFT_SPEED", "DRIVE") * -1));
         // SmartDashboard.putBoolean("test", output.sensors.getDIO("switch1"));
         // output.motors.setMotor("LEFT_LEAD", input.getAxis("LEFT_SPEED", "DRIVE") *
         // -0.5);
